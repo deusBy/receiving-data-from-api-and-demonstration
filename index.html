@@ -5,9 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="">
+
 </head>
 <body>
 	<h1>test</h1>
 	<p>some text</p>
+	<script>
+		let div = document.createElement('div');
+		div.className = "alert";
+		div.innerHTML = "<strong>Всем привет!</strong> Вы прочитали важное сообщение.";
+
+		document.body.append(div);
+	</script>
+		<script>
+		function Get(yourUrl){
+         var Httpreq = new XMLHttpRequest(); // a new request
+         Httpreq.open("GET",yourUrl,false);
+         Httpreq.send(null);
+         return Httpreq.responseText;          
+     }
+
+
+     var json_obj = JSON.parse(Get('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY'));
+     alert("this is the author name: "+json_obj.photos[0].img_src);
+     let img= "<img src='"+json_obj.photos[0].img_src+"''>";
+     let div1 = document.createElement('div');
+     div1.className = "alert";
+     div1.innerHTML = img;
+
+     document.write(img);
+ </script>
 </body>
 </html>
